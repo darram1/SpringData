@@ -1,11 +1,9 @@
 package es.iesjandula.springdata.models;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
 
 
-public class Profesor {
+public class Alumno {
 
     private Long id;
 
@@ -27,9 +25,7 @@ public class Profesor {
 
     private String sexo;
 
-    private Departamento idDepartamento;
-
-    public Profesor() {
+    public Alumno() {
     }
 
     public Long getId() {
@@ -110,13 +106,5 @@ public class Profesor {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public Departamento getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Departamento idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 }

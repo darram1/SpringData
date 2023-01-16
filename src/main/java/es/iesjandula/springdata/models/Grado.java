@@ -1,27 +1,19 @@
 package es.iesjandula.springdata.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class Grado {
 
-
-public class Departamento
-{
-
-    private Long id;
-
+    private long id;
 
     private String nombre;
 
-    public Departamento() {
+    public Grado() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
