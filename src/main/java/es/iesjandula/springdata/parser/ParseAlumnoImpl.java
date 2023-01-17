@@ -1,17 +1,17 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.IParseoAlumno;
 import es.iesjandula.springdata.Interfaces.IParseoDepartamento;
+import es.iesjandula.springdata.models.Alumno;
 import es.iesjandula.springdata.models.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.yaml.snakeyaml.scanner.Constant;
 
 import java.util.Scanner;
 
-public class ParseDepartamentoImpl implements IParseoAlumno {
+public class ParseAlumnoImpl implements IParseoDepartamento {
 
     @Autowired
-    private DepartamentoRepository departamentoRepository;
+    private AlumnoRepository alumnoRepository;
 
     @Override
     public void parseaFichero(Scanner scanner) {
@@ -22,12 +22,12 @@ public class ParseDepartamentoImpl implements IParseoAlumno {
 
             String[] lineaDelFicheroTroceada = lineaDelFichero.split(Constant.DELIMITADOR_CSV);
 
-            Departamento departamento = new Departamento();
+            Alumno alumno = new Alumno();
 
-            departamento.setId(Long.valueOf(lineaDelFicheroTroceada[0]));
-            departamento.setNombre(lineaDelFicheroTroceada[1]);
+            alumno.setId(Long.valueOf(lineaDelFicheroTroceada[0]));
+            alumno.setNombre(lineaDelFicheroTroceada[1]);
 
-            this.departamentoRepository.saveAndFlush(departamento);
+            this.alumnoRepository.saveAndFlush(alumno);
         }
     }
 
