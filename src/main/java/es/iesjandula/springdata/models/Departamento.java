@@ -5,13 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
+@Entity
+@Table(name="departamento")
 public class Departamento
 {
 
+    @Id
+    @Column(length = 10)
     private Long id;
 
-
+    @Column(length = 100)
     private String nombre;
 
     public Departamento() {

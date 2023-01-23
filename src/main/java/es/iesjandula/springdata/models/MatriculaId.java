@@ -1,12 +1,20 @@
 package es.iesjandula.springdata.models;
 
+import jakarta.persistence.Embeddable;
+
+import java.io.Serial;
 import java.io.Serializable;
 
+@Embeddable
 public class MatriculaId implements Serializable {
-    private static final long serialVersionUID = 674777474745623622L;
+
+    @Serial
+    private static final long serialVersionUID = 1053731846633068260L;
 
     private Long idAlumno;
+
     private Long idAsignatura;
+
     private Long idCurso;
 
     public MatriculaId() {
