@@ -1,10 +1,10 @@
 package es.iesjandula.springdata.parser;
 
+import es.iesjandula.springdata.Interfaces.IAlumnoRepository;
+import es.iesjandula.springdata.Interfaces.IAsignaturaRepository;
+import es.iesjandula.springdata.Interfaces.ICursoRepository;
 import es.iesjandula.springdata.Interfaces.IMatriculaRepository;
-import es.iesjandula.springdata.models.Alumno;
-import es.iesjandula.springdata.models.Asignatura;
-import es.iesjandula.springdata.models.Curso;
-import es.iesjandula.springdata.models.Matricula;
+import es.iesjandula.springdata.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Service
@@ -19,6 +20,15 @@ public class ParseoMatriculaImpl
 {
     @Autowired
     private IMatriculaRepository iMatriculaRepository;
+
+    @Autowired
+    private IAlumnoRepository iAlumnoRepository;
+
+    @Autowired
+    private IAsignaturaRepository iAsignaturaRepository;
+
+    @Autowired
+    private ICursoRepository iCursoRepository;
 
     public void mostrarMatriculas()
     {
@@ -39,17 +49,15 @@ public class ParseoMatriculaImpl
 
                 Matricula matricula = new Matricula();
 
-                Alumno alumno = new Alumno();
-                alumno.setId(Long.valueOf(stLineaFichero[0]));
-                matricula.setIdAlumno(alumno);
+                Optional<Alumno> optionalAlumno = this.iAlumnoRepository.findById(Long.valueOf(stLineaFichero[0]));
+                matricula.setIdAlumno(optionalAlumno.get());
 
-                Asignatura asignatura = new Asignatura();
-                asignatura.setId(Long.valueOf(stLineaFichero[1]));
-                matricula.setIdAsignatura(asignatura);
+                Optional<Asignatura> opcAsignatura = this.iAsignaturaRepository.findById(Long.valueOf(stLineaFichero[1]));
+                matricula.setIdAsignatura(opcAsignatura.get());
 
-                Curso curso = new Curso();
-                curso.setId(Long.valueOf(stLineaFichero[2]));
-                matricula.setIdCurso(curso);
+
+                Optional<Curso> optionalCurso = this.iCursoRepository.findById(Long.valueOf((stLineaFichero[2])));
+                matricula.setIdCurso(optionalCurso.get());
 
 
                 listaMatricula.add(matricula);

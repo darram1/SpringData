@@ -44,12 +44,12 @@ public class SpringDataApplication implements CommandLineRunner {
     {
 
         this.parseoAlumno.mostrarAlumnos();
-        //this.parseoAsignatura.mostrarAsignaturas();
+        this.parseoAsignatura.mostrarAsignaturas();
         this.parseoCurso.mostrarCursos();
         this.parseoDepartamento.mostrarDepartamentos();
         this.parseoGrado.mostrarGrados();
-        //this.parseoMatricula.mostrarMatriculas();
-        //this.parseoProfesor.mostrarProfesores();
+        this.parseoMatricula.mostrarMatriculas();
+        this.parseoProfesor.mostrarProfesores();
 
     }
 }

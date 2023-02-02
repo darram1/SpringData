@@ -1,5 +1,6 @@
 package es.iesjandula.springdata.parser;
 
+import es.iesjandula.springdata.Interfaces.IDepartamentoRepository;
 import es.iesjandula.springdata.Interfaces.IProfesorRepository;
 import es.iesjandula.springdata.models.Departamento;
 import es.iesjandula.springdata.models.Profesor;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static es.iesjandula.springdata.utils.Utils.convertStringToDateFormatddMMyyyy;
@@ -19,6 +21,9 @@ public class ParseoProfesorImpl
 {
     @Autowired
     private IProfesorRepository iProfesorRepository;
+
+    @Autowired
+    private IDepartamentoRepository iDepartamentoRepository;
 
     public void mostrarProfesores()
     {
@@ -49,9 +54,8 @@ public class ParseoProfesorImpl
                 profesor.setFechaNacimiento(convertStringToDateFormatddMMyyyy(stLineaFichero[8]));
                 profesor.setSexo(stLineaFichero[9]);
 
-                Departamento departamento = new Departamento();
-                departamento.setId(Long.valueOf(stLineaFichero[10]));
-                profesor.setIdDepartamento(departamento);
+                Optional<Departamento> optionalDepartamento = this.iDepartamentoRepository.findById(Long.valueOf(stLineaFichero[6]));
+                profesor.setIdDepartamento(optionalDepartamento.get());
 
                 listaProfesores.add(profesor);
 

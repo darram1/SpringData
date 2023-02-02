@@ -1,6 +1,8 @@
 package es.iesjandula.springdata.parser;
 
 import es.iesjandula.springdata.Interfaces.IAsignaturaRepository;
+import es.iesjandula.springdata.Interfaces.IGradoRepository;
+import es.iesjandula.springdata.Interfaces.IProfesorRepository;
 import es.iesjandula.springdata.models.Asignatura;
 import es.iesjandula.springdata.models.Grado;
 import es.iesjandula.springdata.models.Profesor;
@@ -11,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @Service
@@ -18,6 +21,14 @@ public class ParseoAsignaturaImpl
 {
     @Autowired
     private IAsignaturaRepository iAsignaturaRepository;
+
+    @Autowired
+    private IProfesorRepository iProfesorRepository;
+
+    @Autowired
+    private IGradoRepository iGradoRepository;
+
+
 
     public void mostrarAsignaturas()
     {
@@ -44,13 +55,12 @@ public class ParseoAsignaturaImpl
                 asignatura.setCurso(Integer.valueOf(stLineaFichero[4]));
                 asignatura.setNombre(stLineaFichero[1]);
                 asignatura.setTipo(stLineaFichero[3]);
-                Grado grado = new Grado();
-                grado.setId(Long.valueOf(stLineaFichero[7]));
-                asignatura.setIdGradoId(grado);
-                Profesor profesor = new Profesor();
-                profesor.setId(Long.valueOf(stLineaFichero[6]));
-                asignatura.setIdProfesorId(profesor);
 
+                Optional<Profesor> optionalProfesor = this.iProfesorRepository.findById(Long.valueOf(stLineaFichero[6]));
+                asignatura.setIdProfesorId(optionalProfesor.get());
+
+                Optional<Grado> optionalGrado = this.iGradoRepository.findById(Long.valueOf(stLineaFichero[7]));
+                asignatura.setIdProfesorId(optionalProfesor.get());
 
 
                 listaAsignatura.add(asignatura);
