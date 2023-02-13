@@ -1,6 +1,6 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.IDepartamentoRepository;
+import es.iesjandula.springdata.repositorios.IDepartamentoRepository;
 import es.iesjandula.springdata.models.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

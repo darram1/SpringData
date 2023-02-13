@@ -1,6 +1,6 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.ICursoRepository;
+import es.iesjandula.springdata.repositorios.ICursoRepository;
 import es.iesjandula.springdata.models.Curso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

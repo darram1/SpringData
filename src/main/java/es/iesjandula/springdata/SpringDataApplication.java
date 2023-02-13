@@ -9,10 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
-public class SpringDataApplication implements CommandLineRunner {
+public class SpringDataApplication implements CommandLineRunner
+{
 
     @Autowired
-    private ParseoDepartamentoImpl parseoDepartamento ;
+    private ParseoDepartamentoImpl parseoDepartamento;
 
     @Autowired
     private ParseoAlumnoImpl parseoAlumno = new ParseoAlumnoImpl();
@@ -33,8 +34,8 @@ public class SpringDataApplication implements CommandLineRunner {
     private ParseoProfesorImpl parseoProfesor = new ParseoProfesorImpl();
 
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         SpringApplication.run(SpringDataApplication.class, args);
 
     }

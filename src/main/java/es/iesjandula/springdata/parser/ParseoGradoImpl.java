@@ -1,6 +1,6 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.IGradoRepository;
+import es.iesjandula.springdata.repositorios.IGradoRepository;
 import es.iesjandula.springdata.models.Grado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class ParseoGradoImpl
         {
             Scanner scanner = new Scanner(file);
             scanner.nextLine();
-            while(scanner.hasNextLine())
+            while (scanner.hasNextLine())
             {
                 String lineaFichero = scanner.nextLine();
                 String[] stLineaFichero = lineaFichero.split(",");
@@ -43,7 +43,7 @@ public class ParseoGradoImpl
                 listaGrado.add(grado);
 
             }
-            for(Grado grado : listaGrado)
+            for (Grado grado : listaGrado)
             {
                 this.iGradoRepository.saveAndFlush(grado);
                 System.out.println(grado);

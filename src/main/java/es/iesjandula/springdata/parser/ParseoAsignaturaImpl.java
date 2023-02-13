@@ -1,8 +1,8 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.IAsignaturaRepository;
-import es.iesjandula.springdata.Interfaces.IGradoRepository;
-import es.iesjandula.springdata.Interfaces.IProfesorRepository;
+import es.iesjandula.springdata.repositorios.IAsignaturaRepository;
+import es.iesjandula.springdata.repositorios.IGradoRepository;
+import es.iesjandula.springdata.repositorios.IProfesorRepository;
 import es.iesjandula.springdata.models.Asignatura;
 import es.iesjandula.springdata.models.Grado;
 import es.iesjandula.springdata.models.Profesor;
@@ -29,7 +29,6 @@ public class ParseoAsignaturaImpl
     private IGradoRepository iGradoRepository;
 
 
-
     public void mostrarAsignaturas()
     {
         String asignaturas = "src/main/resources/csv/asignatura.csv";
@@ -42,12 +41,12 @@ public class ParseoAsignaturaImpl
         {
             Scanner scanner = new Scanner(file);
             scanner.nextLine();
-            while(scanner.hasNextLine())
+            while (scanner.hasNextLine())
             {
                 String lineaFichero = scanner.nextLine();
                 String[] stLineaFichero = lineaFichero.split(",");
 
-                Asignatura asignatura= new Asignatura();
+                Asignatura asignatura = new Asignatura();
 
                 asignatura.setId(Long.valueOf(stLineaFichero[0]));
                 asignatura.setCreditos(Double.valueOf(stLineaFichero[2]));
@@ -66,7 +65,7 @@ public class ParseoAsignaturaImpl
                 listaAsignatura.add(asignatura);
 
             }
-            for(Asignatura asignatura : listaAsignatura)
+            for (Asignatura asignatura : listaAsignatura)
             {
                 this.iAsignaturaRepository.saveAndFlush(asignatura);
                 System.out.println(asignatura);

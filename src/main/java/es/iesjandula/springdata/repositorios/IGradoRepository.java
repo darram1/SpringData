@@ -1,4 +1,4 @@
-package es.iesjandula.springdata.Interfaces;
+package es.iesjandula.springdata.repositorios;
 
 import es.iesjandula.springdata.models.Grado;
 import org.springframework.data.jpa.repository.JpaRepository;

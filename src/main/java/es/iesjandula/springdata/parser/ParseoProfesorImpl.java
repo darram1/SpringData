@@ -1,7 +1,7 @@
 package es.iesjandula.springdata.parser;
 
-import es.iesjandula.springdata.Interfaces.IDepartamentoRepository;
-import es.iesjandula.springdata.Interfaces.IProfesorRepository;
+import es.iesjandula.springdata.repositorios.IDepartamentoRepository;
+import es.iesjandula.springdata.repositorios.IProfesorRepository;
 import es.iesjandula.springdata.models.Departamento;
 import es.iesjandula.springdata.models.Profesor;
 import org.springframework.beans.factory.annotation.Autowired;
